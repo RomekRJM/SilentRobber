@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://icon.png" type="Texture" id=1]
+
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+
+uniform vec3 color = vec3(0.4, 0.4, 1.0); // you can assign a default value to uniforms
+
+void fragment(){
+	COLOR = vec4(color, 1.0-UV.x);
+}"
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = SubResource( 1 )
+shader_param/color = Vector3( 0.4, 0.4, 1 )
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Shader" type="Sprite" parent="."]
+material = SubResource( 2 )
+scale = Vector2( 153.632, 68.3684 )
+texture = ExtResource( 1 )
