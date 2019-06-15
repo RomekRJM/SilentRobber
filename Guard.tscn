@@ -1,0 +1,60 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://PathFollow2D.gd" type="Script" id=1]
+[ext_resource path="res://icon.png" type="Texture" id=2]
+[ext_resource path="res://Polygon2D.gd" type="Script" id=3]
+[ext_resource path="res://player.png" type="Texture" id=4]
+
+[sub_resource type="Curve2D" id=4]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 265.854, 406.266, 0, 0, 0, 0, 340.482, 250.473, 0, 0, 0, 0, 514.268, 150.166, 0, 0, 0, 0, 669.393, 253.972, 0, 0, 0, 0, 863.007, 435.922, 0, 0, 0, 0, 863.007, 435.922, 0, 0, 0, 0, 661.228, 518.733, 0, 0, 0, 0, 576.085, 454.584, 0, 0, 0, 0, 527.098, 364.775, 0, 0, 0, 0, 453.618, 437.089, 0, 0, 0, 0, 383.637, 495.406, 0, 0, 0, 0, 265.854, 406.266 )
+}
+
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+
+uniform vec3 color; // you can assign a default value to uniforms
+
+void fragment(){
+	COLOR = vec4(color, 1.0-UV.x);
+}"
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = SubResource( 1 )
+shader_param/color = Vector3( 0.9, 0.8, 0.1 )
+
+[sub_resource type="CircleShape2D" id=3]
+
+[node name="Path2D" type="Path2D"]
+curve = SubResource( 4 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="PathFollow2D" type="PathFollow2D" parent="."]
+position = Vector2( 265.854, 406.266 )
+rotation = -1.12406
+script = ExtResource( 1 )
+speed = 45
+
+[node name="Foe" type="KinematicBody2D" parent="PathFollow2D"]
+position = Vector2( 251.541, -415.28 )
+rotation = 1.12406
+
+[node name="Polygon2D" type="Polygon2D" parent="PathFollow2D/Foe"]
+material = SubResource( 2 )
+position = Vector2( 265.19, 420.463 )
+offset = Vector2( -65.1904, -120.463 )
+texture = ExtResource( 2 )
+polygon = PoolVector2Array( 39, 9, 89, 9, 67, 121 )
+uv = PoolVector2Array( 39, 9, 89, 9, 67, 121 )
+script = ExtResource( 3 )
+
+[node name="FoeShape" type="CollisionShape2D" parent="PathFollow2D/Foe"]
+position = Vector2( 265.965, 422.897 )
+shape = SubResource( 3 )
+
+[node name="FoeSprite" type="Sprite" parent="PathFollow2D/Foe"]
+position = Vector2( 263, 420 )
+texture = ExtResource( 4 )
+offset = Vector2( 3.66687, 2.18716 )
