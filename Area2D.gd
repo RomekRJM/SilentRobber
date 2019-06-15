@@ -1,4 +1,4 @@
-extends Area2D
+extends KinematicBody2D
 
 # Declare member variables here. Examples:
 export var speed = 400
@@ -9,7 +9,7 @@ var screen_size
 func _ready():
 	self.screen_size = get_viewport_rect().size
 
-func _process(delta):
+func _physics_process(delta):
 	var velocity = Vector2()
 	if Input.is_key_pressed(KEY_LEFT) or Input.is_key_pressed(KEY_A):
 		velocity.x = -1
@@ -21,8 +21,7 @@ func _process(delta):
 		velocity.y = 1
 	
 	if velocity.length() > 0:
-		velocity = velocity.normalized() * speed
+		velocity = velocity.normalized() * speed * delta
+	
+	move_and_collide(velocity)
 
-	position += velocity * delta
-	position.x = clamp(position.x, 0, screen_size.x)
-	position.y = clamp(position.y, 0, screen_size.y)
