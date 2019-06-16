@@ -19,6 +19,16 @@ config/name="SilentRobber"
 run/main_scene="res://Main.tscn"
 config/icon="res://icon.png"
 
+[layer_names]
+
+2d_physics/layer_1="Player"
+2d_physics/layer_2="Wall"
+2d_physics/layer_3="Item"
+2d_physics/layer_4="Enemy"
+2d_physics/layer_5="EnemyVision"
+2d_physics/layer_6="EnemyReserved1"
+2d_physics/layer_7="EnemyReserved2"
+
 [rendering]
 
 environment/default_environment="res://default_env.tres"

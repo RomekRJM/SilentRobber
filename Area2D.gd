@@ -24,4 +24,5 @@ func _physics_process(delta):
 		velocity = velocity.normalized() * speed * delta
 	
 	move_and_collide(velocity)
+	
 

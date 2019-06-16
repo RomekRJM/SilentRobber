@@ -1,4 +1,4 @@
-extends Polygon2D
+extends CollisionPolygon2D
 
 # Declare member variables here. Examples:
 var direction = 1
@@ -19,5 +19,3 @@ func _process(delta):
 		direction = -1
 	elif rotation <= MIN_ANGLE:
 		direction = 1
-	
-	#print(str(direction, ' ', rotation*180/PI))
