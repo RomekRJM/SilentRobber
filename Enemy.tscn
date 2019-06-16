@@ -55,16 +55,13 @@ collision_layer = 16
 script = ExtResource( 2 )
 
 [node name="CollisionPolygon" type="CollisionPolygon2D" parent="VisionBody"]
-position = Vector2( -69.5562, -121.821 )
-polygon = PoolVector2Array( 39, 9, 89, 9, 67, 121 )
+polygon = PoolVector2Array( 0, 0, 170, -30, 170, 30 )
 
 [node name="VisionPolygon" type="Polygon2D" parent="VisionBody"]
 modulate = Color( 0.933333, 0.635294, 0.0666667, 1 )
 self_modulate = Color( 0.933333, 0.635294, 0.0666667, 1 )
 material = SubResource( 5 )
-position = Vector2( -8, -4.00001 )
 color = Color( 0.933333, 0.635294, 0.0666667, 1 )
-offset = Vector2( -61.2654, -120.308 )
 texture = ExtResource( 3 )
-polygon = PoolVector2Array( 39, 9, 89, 9, 67, 121 )
+polygon = PoolVector2Array( 0, 0, 170, -30, 170, 30 )
 [connection signal="body_entered" from="VisionBody" to="VisionBody" method="_on_body_entered"]
