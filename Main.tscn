@@ -11,4 +11,4 @@
 [node name="Foe" parent="." instance=ExtResource( 2 )]
 
 [node name="Camera" parent="." instance=ExtResource( 3 )]
-position = Vector2( 20, -205 )
+position = Vector2( 159.164, 224.462 )

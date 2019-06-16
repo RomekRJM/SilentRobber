@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://player.png" type="Texture" id=1]
-[ext_resource path="res://CollisionPolygon.gd" type="Script" id=2]
+[ext_resource path="res://VisionBody.gd" type="Script" id=2]
 [ext_resource path="res://icon.png" type="Texture" id=3]
 
 [sub_resource type="CircleShape2D" id=1]
@@ -50,30 +50,31 @@ position = Vector2( 0.000305176, -0.00012207 )
 rotation = -8.34465e-07
 
 [node name="FoeShape" type="CollisionShape2D" parent="."]
-position = Vector2( 265.965, 422.897 )
+position = Vector2( 0.772964, 0.553345 )
 shape = SubResource( 1 )
 
 [node name="FoeSprite" type="Sprite" parent="."]
-position = Vector2( 263, 420 )
+position = Vector2( -2.19203, -2.34366 )
 texture = ExtResource( 1 )
-offset = Vector2( 3.66687, 2.18716 )
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
 
 [node name="VisionBody" type="KinematicBody2D" parent="."]
 material = SubResource( 3 )
-position = Vector2( 266.748, 422.165 )
-
-[node name="CollisionPolygon" type="CollisionPolygon2D" parent="VisionBody"]
-position = Vector2( -63.9375, -119.713 )
-polygon = PoolVector2Array( 39, 9, 89, 9, 67, 121 )
+position = Vector2( 1.55595, -0.17865 )
 script = ExtResource( 2 )
 
-[node name="VisionPolygon" type="Polygon2D" parent="VisionBody/CollisionPolygon"]
+[node name="CollisionPolygon" type="CollisionPolygon2D" parent="VisionBody"]
+position = Vector2( -69.5562, -121.821 )
+polygon = PoolVector2Array( 39, 9, 89, 9, 67, 121 )
+
+[node name="VisionPolygon" type="Polygon2D" parent="VisionBody"]
 modulate = Color( 0.933333, 0.635294, 0.0666667, 1 )
 self_modulate = Color( 0.933333, 0.635294, 0.0666667, 1 )
 material = SubResource( 5 )
+position = Vector2( -8, -4.00001 )
 color = Color( 0.933333, 0.635294, 0.0666667, 1 )
+offset = Vector2( -61.2654, -120.308 )
 texture = ExtResource( 3 )
 polygon = PoolVector2Array( 39, 9, 89, 9, 67, 121 )
 
