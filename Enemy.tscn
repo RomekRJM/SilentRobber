@@ -32,7 +32,7 @@ void fragment(){
 shader = SubResource( 4 )
 shader_param/color = Vector3( 1, 1, 0 )
 
-[node name="Camera" type="KinematicBody2D"]
+[node name="Enemy" type="KinematicBody2D"]
 position = Vector2( 0.000305176, -0.00012207 )
 rotation = -8.34465e-07
 collision_layer = 8

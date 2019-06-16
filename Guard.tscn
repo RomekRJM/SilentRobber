@@ -1,14 +1,14 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://PathFollow2D.gd" type="Script" id=1]
-[ext_resource path="res://Camera.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Enemy.tscn" type="PackedScene" id=2]
 
 [sub_resource type="Curve2D" id=1]
 _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, 265.854, 406.266, 0, 0, 0, 0, 340.482, 250.473, 0, 0, 0, 0, 514.268, 150.166, 0, 0, 0, 0, 669.393, 253.972, 0, 0, 0, 0, 863.007, 435.922, 0, 0, 0, 0, 863.007, 435.922, 0, 0, 0, 0, 661.228, 518.733, 0, 0, 0, 0, 576.085, 454.584, 0, 0, 0, 0, 527.098, 364.775, 0, 0, 0, 0, 453.618, 437.089, 0, 0, 0, 0, 383.637, 495.406, 0, 0, 0, 0, 276.332, 411.428, 0, 0, 0, 0, 265.854, 406.266 )
 }
 
-[node name="Path2D" type="Path2D"]
+[node name="Guard" type="Path2D"]
 curve = SubResource( 1 )
 __meta__ = {
 "_edit_group_": true
@@ -20,4 +20,4 @@ rotation = -1.12406
 script = ExtResource( 1 )
 speed = 45
 
-[node name="Camera" parent="PathFollow2D" instance=ExtResource( 2 )]
+[node name="Enemy" parent="PathFollow2D" instance=ExtResource( 2 )]
