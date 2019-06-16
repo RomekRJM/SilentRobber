@@ -55,6 +55,7 @@ shape = SubResource( 1 )
 
 [node name="FoeSprite" type="Sprite" parent="."]
 position = Vector2( -2.19203, -2.34366 )
+z_index = 10
 texture = ExtResource( 1 )
 
 [node name="Polygon2D" type="Polygon2D" parent="."]

@@ -56,5 +56,6 @@ shape = SubResource( 4 )
 
 [node name="FoeSprite" type="Sprite" parent="PathFollow2D/Foe"]
 position = Vector2( 263, 420 )
+z_index = 10
 texture = ExtResource( 4 )
 offset = Vector2( 3.66687, 2.18716 )
