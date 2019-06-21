@@ -19,6 +19,10 @@ config/name="SilentRobber"
 run/main_scene="res://Main.tscn"
 config/icon="res://icon.png"
 
+[display]
+
+window/size/height=640
+
 [layer_names]
 
 2d_physics/layer_1="Player"
