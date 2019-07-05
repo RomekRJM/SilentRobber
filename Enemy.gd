@@ -14,10 +14,10 @@ func _physics_process(delta):
 	var space_state = get_world_2d().direct_space_state
 	var result = space_state.intersect_ray(position, get_tree().get_current_scene().get_node("Player").position, 
 		[self], collision_mask)
-	
+
 	if result:
 		hit_pos = result.position
-		_draw()
+		update()
 		
 		if result.collider.name == "Player":
 			pass
