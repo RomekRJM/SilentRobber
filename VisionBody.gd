@@ -25,3 +25,5 @@ func _process(delta):
 func _on_body_entered(body):
 	if body.get_name() == "Player":
 		emit_signal("player_spoted")
+	if body.get_name() == "TileMap":
+		pass
