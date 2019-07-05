@@ -5,10 +5,10 @@ extends KinematicBody2D
 var hit_pos
 var laser_color = Color(1.0, 0.5, 0.6)
 const r = 150
-const tau = 2 * PI 
-const rays = 60
+const deg1 = PI / 180.0
+const step = deg1
+const rays = 90
 const mid_ray = rays / 2
-const sight_angle = tau * r / rays
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -34,4 +34,4 @@ func _draw():
 		draw_circle(pos, 5, laser_color)
 
 		for i in range(rays):
-			draw_line(Vector2(0.0, 0.0), pos.rotated((mid_ray-i)*tau/rays/44), laser_color)
+			draw_line(Vector2(0.0, 0.0), pos.rotated((mid_ray-i)*step), laser_color)
