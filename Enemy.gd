@@ -28,20 +28,16 @@ func _physics_process(delta):
 		c = position
 		beta = (c-p).angle()
 		
-		var xp = cos(beta) * r + c.x
-		var yp = sin(beta) * r + c.y
-		
 		for i in range(rays):
 			var current_angle = beta - alpha + i * sight_step
-			hit_pos[i] = Vector2(cos(current_angle) * r + c.x, sin(current_angle) * r + c.y)
+			var ray_destination = Vector2(cos(current_angle) * r + c.x, sin(current_angle) * r + c.y)
+			var final_ray_destination = space_state.intersect_ray(position, ray_destination, [self], collision_mask)
 			
-			if i == 30:
-				print("angle" + str(current_angle))
+			if final_ray_destination:
+				hit_pos[i] = final_ray_destination.position
+			else:
+				hit_pos[i] = ray_destination
 			
-		
-		print(rad2deg((p-c).angle()))
-		# print("%d %d" % [p.x, xp])
-		# print("%d %d" % [p.y, yp])
 		update()
 		
 		if result.collider.name == "Player":
