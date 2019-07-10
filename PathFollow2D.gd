@@ -8,6 +8,5 @@ export var speed = 2
 func _ready():
 	pass # Replace with function body.
 
-
 func _process(delta):
 	self.set_offset(self.get_offset() + speed * delta)

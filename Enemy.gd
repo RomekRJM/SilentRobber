@@ -34,8 +34,9 @@ func _physics_process(delta):
 		
 	for i in range(rays):
 		var current_angle = rot - alpha + i * sight_step
-		var ray_destination = Vector2(cos(current_angle) * r + position.x, sin(current_angle) * r + position.y)
-		var final_ray_destination = space_state.intersect_ray(position, ray_destination, [self], collision_mask)
+		var ray_destination = Vector2(cos(current_angle) * r + global_position.x, sin(current_angle) * r + global_position.y)
+		var final_ray_destination = space_state.intersect_ray(global_position, ray_destination, [self], collision_mask)
+		print(str(global_position))
 		
 		if final_ray_destination:
 			hit_pos[i] = final_ray_destination.position
@@ -47,4 +48,4 @@ func _physics_process(delta):
 func _draw():
 	for h in hit_pos:
 		if h:
-			draw_line(Vector2(0.0, 0.0), (h-position).rotated(-rotation), laser_color)
+			draw_line(Vector2(0.0, 0.0), (h-global_position), laser_color)
