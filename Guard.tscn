@@ -16,6 +16,7 @@ __meta__ = {
 }
 
 [node name="PathFollow2D" type="PathFollow2D" parent="."]
+rotation = 0.334737
 script = ExtResource( 1 )
 speed = 45
 
