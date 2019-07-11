@@ -14,12 +14,18 @@ const sight_step = alpha * 2 / rays
 var rot = 0.0
 var direction = 1
 var speed = 2.2
-const MAX_ANGLE = PI
+var vision_polygon
+var poolVector2Array
+var current_hit_pos
+const MAX_ANGLE = PI/2
 const MIN_ANGLE = -MAX_ANGLE
+
+signal player_spoted
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	hit_pos.resize(rays)
+	hit_pos.resize(rays+1)
+	vision_polygon = get_node("VisionBody/VisionPolygon")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
@@ -31,21 +37,31 @@ func _physics_process(delta):
 		direction = -1
 	elif rot <= MIN_ANGLE:
 		direction = 1
-		
+	
+	hit_pos[0] = Vector2(0.0, 0.0)
+	
 	for i in range(rays):
 		var current_angle = rot - alpha + i * sight_step
 		var ray_destination = Vector2(cos(current_angle) * r + global_position.x, sin(current_angle) * r + global_position.y)
 		var final_ray_destination = space_state.intersect_ray(global_position, ray_destination, [self], collision_mask)
-		print(str(global_position))
 		
 		if final_ray_destination:
-			hit_pos[i] = final_ray_destination.position
+			current_hit_pos = final_ray_destination.position
 		else:
-			hit_pos[i] = ray_destination
+			current_hit_pos = ray_destination
+		
+		hit_pos[i+1] = current_hit_pos - global_position
+		vision_polygon.polygon = PoolVector2Array(hit_pos)
 		
 	update()
 		
 func _draw():
 	for h in hit_pos:
 		if h:
-			draw_line(Vector2(0.0, 0.0), (h-global_position), laser_color)
+			draw_line(Vector2(0.0, 0.0), (h+position), laser_color)
+			
+func _on_body_entered(body):
+	if body.get_name() == "Player":
+		emit_signal("player_spoted")
+	if body.get_name() == "TileMap":
+		pass

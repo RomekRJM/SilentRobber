@@ -1,9 +1,8 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Enemy.gd" type="Script" id=1]
 [ext_resource path="res://enemy.png" type="Texture" id=2]
-[ext_resource path="res://VisionBody.gd" type="Script" id=3]
-[ext_resource path="res://icon.png" type="Texture" id=4]
+[ext_resource path="res://icon.png" type="Texture" id=3]
 
 [sub_resource type="CircleShape2D" id=1]
 
@@ -54,16 +53,11 @@ material = SubResource( 3 )
 position = Vector2( 1.55595, -0.17865 )
 collision_layer = 16
 collision_mask = 3
-script = ExtResource( 3 )
-
-[node name="CollisionPolygon" type="CollisionPolygon2D" parent="VisionBody"]
-polygon = PoolVector2Array( 0, 0, 170, -30, 170, 30 )
 
 [node name="VisionPolygon" type="Polygon2D" parent="VisionBody"]
 modulate = Color( 0.933333, 0.635294, 0.0666667, 1 )
 self_modulate = Color( 0.933333, 0.635294, 0.0666667, 1 )
 material = SubResource( 5 )
 color = Color( 0.933333, 0.635294, 0.0666667, 1 )
-texture = ExtResource( 4 )
+texture = ExtResource( 3 )
 polygon = PoolVector2Array( 0, 0, 170, -30, 170, 30 )
-[connection signal="body_entered" from="VisionBody" to="VisionBody" method="_on_body_entered"]
