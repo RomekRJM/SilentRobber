@@ -58,7 +58,7 @@ func _physics_process(delta):
 func _draw():
 	for h in hit_pos:
 		if h:
-			draw_line(Vector2(0.0, 0.0), (h+position), laser_color)
+			draw_line(Vector2(0.0, 0.0), h, laser_color)
 			
 func _on_body_entered(body):
 	if body.get_name() == "Player":
