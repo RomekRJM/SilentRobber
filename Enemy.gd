@@ -52,8 +52,10 @@ func _physics_process(delta):
 			current_hit_pos = final_ray_destination.position
 		else:
 			current_hit_pos = ray_destination
+			
+		print("Guard rotation: " + str(global_rotation))
 		
-		hit_pos[i+1] = current_hit_pos - global_position
+		hit_pos[i+1] = (current_hit_pos - global_position).rotated(-global_rotation)
 		vision_polygon.polygon = PoolVector2Array(hit_pos)
 		
 	update()
