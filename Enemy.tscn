@@ -50,7 +50,6 @@ texture = ExtResource( 2 )
 
 [node name="VisionBody" type="Area2D" parent="."]
 material = SubResource( 3 )
-position = Vector2( 1.55595, -0.17865 )
 collision_layer = 16
 collision_mask = 3
 

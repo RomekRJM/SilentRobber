@@ -31,7 +31,6 @@ func _ready():
 func _physics_process(delta):
 	var space_state = get_world_2d().direct_space_state
 	rot += direction * delta * speed
-	rot = clamp(rot, MIN_ANGLE, MAX_ANGLE)
 	
 	if rot >= MAX_ANGLE:
 		direction = -1
@@ -46,6 +45,10 @@ func _physics_process(delta):
 		var final_ray_destination = space_state.intersect_ray(global_position, ray_destination, [self], collision_mask)
 		
 		if final_ray_destination:
+			print(final_ray_destination.collider.name)
+			if final_ray_destination.collider.name == "Player":
+				emit_signal("player_spoted")
+			
 			current_hit_pos = final_ray_destination.position
 		else:
 			current_hit_pos = ray_destination
@@ -59,9 +62,3 @@ func _draw():
 	for h in hit_pos:
 		if h:
 			draw_line(Vector2(0.0, 0.0), h, laser_color)
-			
-func _on_body_entered(body):
-	if body.get_name() == "Player":
-		emit_signal("player_spoted")
-	if body.get_name() == "TileMap":
-		pass
