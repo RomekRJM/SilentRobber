@@ -14,7 +14,8 @@ script = ExtResource( 1 )
 position = Vector2( 69.9317, 577.565 )
 
 [node name="SurveillanceCam" parent="." instance=ExtResource( 3 )]
-position = Vector2( 213.579, 267.994 )
+position = Vector2( 54.579, 54.994 )
+rotation = 0.785398
 
 [node name="Guard" parent="." instance=ExtResource( 4 )]
 
