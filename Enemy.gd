@@ -3,7 +3,7 @@ extends KinematicBody2D
 # This is half of vision angle
 export var vision_angle = 30
 export var r = 200
-export var rot = 0.0
+export var initial_vision_rotation = 0.0
 export var direction = 1
 export var vision_rotation_speed = 1.25
 
@@ -19,6 +19,7 @@ var hit_pos = []
 var vision_polygon
 var poolVector2Array
 var current_hit_pos
+var rot = deg2rad(initial_vision_rotation)
 var half_of_vision_angle = deg2rad(vision_angle / 2.0)
 var rays_angle_interval = half_of_vision_angle * 2 / RAYS_IN_VISION_ANGLE
 
@@ -55,8 +56,6 @@ func _physics_process(delta):
 			current_hit_pos = final_ray_destination.position
 		else:
 			current_hit_pos = ray_destination
-			
-		print("Guard rotation: " + str(global_rotation))
 		
 		hit_pos[i+1] = (current_hit_pos - global_position).rotated(-global_rotation)
 		vision_polygon.polygon = PoolVector2Array(hit_pos)
