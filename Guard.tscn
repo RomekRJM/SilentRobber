@@ -5,7 +5,7 @@
 
 [sub_resource type="Curve2D" id=1]
 _data = {
-"points": PoolVector2Array( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 230, 80, 0, 0, 0, 0, 380, 60, 0, 0, 0, 0, 490, 180, 0, 0, 0, 0, 740, 70, 0, 0, 0, 0, 780, 270, 0, 0, 0, 0, 1020, 530, 0, 0, 0, 0, 660, 610, 0, 0, 0, 0, 660, 450, 0, 0, 0, 0, 527.098, 364.775, 0, 0, 0, 0, 460, 530, 0, 0, 0, 0, 383.637, 495.406, 0, 0, 0, 0, 300, 510, 0, 0, 0, 0, 90, 390, 0, 0, 0, 0, 230, 240, 0, 0, 0, 0, 0, 0 )
+"points": PoolVector2Array( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 564.312, -1.49285, 0, 0, 0, 0, 0, 0 )
 }
 
 [node name="Guard" type="Path2D"]
@@ -16,9 +16,7 @@ __meta__ = {
 }
 
 [node name="PathFollow2D" type="PathFollow2D" parent="."]
-position = Vector2( 1015.92, 525.085 )
-rotation = 1.38314
-offset = 1378.0
+rotation = -0.00264543
 script = ExtResource( 1 )
 speed = 45
 

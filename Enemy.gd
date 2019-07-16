@@ -1,11 +1,11 @@
 extends KinematicBody2D
 
 # This is half of vision angle
-export var vision_angle = 60
+export var vision_angle = 30
 export var r = 200
 export var rot = 0.0
 export var direction = 1
-export var speed = 2.2
+export var vision_rotation_speed = 1.25
 
 # How many rays should be casted inside vision angle
 const RAYS_IN_VISION_ANGLE = 60
@@ -32,7 +32,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
 	var space_state = get_world_2d().direct_space_state
-	rot += direction * delta * speed
+	rot += direction * delta * vision_rotation_speed
 	var global_rot = rot - global_rotation
 	
 	if global_rot >= MAX_ANGLE:

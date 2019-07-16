@@ -18,6 +18,7 @@ position = Vector2( 54.579, 54.994 )
 rotation = 0.785398
 
 [node name="Guard" parent="." instance=ExtResource( 4 )]
+position = Vector2( 355, 101 )
 
 [node name="TileMap" parent="." instance=ExtResource( 5 )]
 
