@@ -3,7 +3,6 @@ extends KinematicBody2D
 # This is half of vision angle
 export var vision_angle = 30
 export var r = 200
-export var initial_vision_rotation = 0.0
 export var direction = 1
 export var vision_rotation_speed = 1.25
 
@@ -12,14 +11,13 @@ const RAYS_IN_VISION_ANGLE = 60
 const MAX_ANGLE = PI/4
 const MIN_ANGLE = -MAX_ANGLE
 
+var rot = 0.0
 var beta
-var c
 var laser_color = Color(1.0, 0.5, 0.6)
 var hit_pos = []
 var vision_polygon
 var poolVector2Array
 var current_hit_pos
-var rot = deg2rad(initial_vision_rotation)
 var half_of_vision_angle = deg2rad(vision_angle / 2.0)
 var rays_angle_interval = half_of_vision_angle * 2 / RAYS_IN_VISION_ANGLE
 
@@ -33,13 +31,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
 	var space_state = get_world_2d().direct_space_state
-	rot += direction * delta * vision_rotation_speed
-	var global_rot = rot - global_rotation
-	
-	if global_rot >= MAX_ANGLE:
-		direction = -1
-	elif global_rot <= MIN_ANGLE:
-		direction = 1
+	rot = update_rot(delta)
 	
 	hit_pos[0] = Vector2(0.0, 0.0)
 	
@@ -60,6 +52,22 @@ func _physics_process(delta):
 		vision_polygon.polygon = PoolVector2Array(hit_pos)
 		
 	update()
+	
+func update_rot(delta):
+	if vision_rotation_speed > 0.0001:
+		rot += direction * delta * vision_rotation_speed
+		var global_rot = rot - global_rotation
+		
+		if global_rot > MAX_ANGLE:
+			direction = -1
+			rot = global_rotation + MAX_ANGLE
+		elif global_rot < MIN_ANGLE:
+			direction = 1
+			rot = global_rotation + MIN_ANGLE
+	else:
+		rot = global_rotation
+	
+	return rot
 		
 func _draw():
 	for h in hit_pos:
