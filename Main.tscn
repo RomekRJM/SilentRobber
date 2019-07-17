@@ -16,7 +16,6 @@ position = Vector2( 69.9317, 577.565 )
 [node name="Camera0" parent="." instance=ExtResource( 3 )]
 position = Vector2( 265.437, 385.565 )
 rotation = -3.14159
-scale = Vector2( 1, 1 )
 vision_angle = 90
 r = 150
 initial_vision_rotation = 180.0
