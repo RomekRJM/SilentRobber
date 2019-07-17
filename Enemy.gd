@@ -1,16 +1,20 @@
 extends KinematicBody2D
 
+# How many rays should be casted inside vision angle
+const RAYS_IN_VISION_ANGLE = 60
+const DEFAULT_MAX_ANGLE = PI/4
+const DEFAULT_MIN_ANGLE = -DEFAULT_MAX_ANGLE
+
 # This is half of vision angle
 export var vision_angle = 30
 export var r = 200
 export var direction = 1
 export var vision_rotation_speed = 1.25
+export var min_angle_deg = 0.0
+export var max_angle_deg = 0.0
 
-# How many rays should be casted inside vision angle
-const RAYS_IN_VISION_ANGLE = 60
-const MAX_ANGLE = PI/4
-const MIN_ANGLE = -MAX_ANGLE
-
+var min_angle = DEFAULT_MIN_ANGLE
+var max_angle = DEFAULT_MAX_ANGLE
 var rot = 0.0
 var beta
 var laser_color = Color(1.0, 0.5, 0.6)
@@ -27,6 +31,12 @@ signal player_spoted
 func _ready():
 	hit_pos.resize(RAYS_IN_VISION_ANGLE+1)
 	vision_polygon = get_node("VisionBody/VisionPolygon")
+	
+	if abs(min_angle_deg) > 0.0001:
+		min_angle = deg2rad(min_angle_deg)
+	
+	if abs(max_angle_deg) > 0.0001:
+		max_angle = deg2rad(max_angle_deg)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
@@ -54,16 +64,16 @@ func _physics_process(delta):
 	update()
 	
 func update_rot(delta):
-	if vision_rotation_speed > 0.0001:
+	if abs(vision_rotation_speed) > 0.0001:
 		rot += direction * delta * vision_rotation_speed
 		var global_rot = rot - global_rotation
 		
-		if global_rot > MAX_ANGLE:
+		if global_rot > max_angle:
 			direction = -1
-			rot = global_rotation + MAX_ANGLE
-		elif global_rot < MIN_ANGLE:
+			rot = global_rotation + max_angle
+		elif global_rot < min_angle:
 			direction = 1
-			rot = global_rotation + MIN_ANGLE
+			rot = global_rotation + min_angle
 	else:
 		rot = global_rotation
 	

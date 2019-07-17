@@ -27,14 +27,21 @@ rotation = 0.785398
 [node name="Camera2" parent="." instance=ExtResource( 3 )]
 position = Vector2( 646.466, 261.488 )
 rotation = 2.35619
-r = 160
+r = 165
 vision_rotation_speed = 0.75
 
 [node name="Camera3" parent="." instance=ExtResource( 3 )]
 position = Vector2( 318.045, 257.278 )
 rotation = 0.785398
-r = 160
+r = 165
 vision_rotation_speed = 0.75
+
+[node name="Camera4" parent="." instance=ExtResource( 3 )]
+position = Vector2( 831.045, 297.278 )
+vision_angle = 90
+r = 250
+vision_rotation_speed = 1.6
+max_angle_deg = 359000.0
 
 [node name="Guard1" parent="." instance=ExtResource( 4 )]
 position = Vector2( 355, 101 )
