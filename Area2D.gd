@@ -21,8 +21,8 @@ func _physics_process(delta):
 		velocity.y = 1
 	
 	if velocity.length() > 0:
-		velocity = velocity.normalized() * speed * delta
+		velocity = velocity.normalized() * speed
 	
-	move_and_collide(velocity)
+	move_and_slide(velocity)
 	
 

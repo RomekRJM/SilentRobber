@@ -49,7 +49,6 @@ func _physics_process(delta):
 		var final_ray_destination = space_state.intersect_ray(global_position, ray_destination, [self], collision_mask)
 		
 		if final_ray_destination:
-			print(final_ray_destination.collider.name)
 			if final_ray_destination.collider.name == "Player":
 				emit_signal("player_spoted")
 			
