@@ -25,7 +25,7 @@ code = "shader_type canvas_item;
 uniform vec3 color; // you can assign a default value to uniforms
 
 void fragment(){
-	COLOR = vec4(color, 1.0-UV.x);
+	COLOR = vec4(color, 1.0-UV.x*0.2);
 }"
 
 [sub_resource type="ShaderMaterial" id=5]

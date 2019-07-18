@@ -32,7 +32,9 @@ window/size/height=640
 2d_physics/layer_5="EnemyVision"
 2d_physics/layer_6="EnemyReserved1"
 2d_physics/layer_7="EnemyReserved2"
+2d_physics/layer_8="Escape"
 
 [rendering]
 
+environment/default_clear_color=Color( 0, 0, 0, 1 )
 environment/default_environment="res://default_env.tres"

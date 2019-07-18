@@ -60,8 +60,6 @@ func _physics_process(delta):
 		
 		hit_pos[i+1] = (current_hit_pos - global_position).rotated(-global_rotation)
 		vision_polygon.polygon = PoolVector2Array(hit_pos)
-		
-	update()
 	
 func update_rot(delta):
 	if abs(vision_rotation_speed) > 0.0001:
@@ -78,8 +76,4 @@ func update_rot(delta):
 		rot = global_rotation
 	
 	return rot
-		
-func _draw():
-	for h in hit_pos:
-		if h:
-			draw_line(Vector2(0.0, 0.0), h, laser_color)
+
