@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Main.gd" type="Script" id=1]
 [ext_resource path="res://Player.tscn" type="PackedScene" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://TileMap.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Diamond.tscn" type="PackedScene" id=6]
 [ext_resource path="res://HUD.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Exit.tscn" type="PackedScene" id=8]
 
 [node name="Level" type="Node2D"]
 script = ExtResource( 1 )
@@ -53,3 +54,7 @@ position = Vector2( 355, 101 )
 position = Vector2( 897.343, 511.504 )
 
 [node name="HUD" parent="." instance=ExtResource( 7 )]
+
+[node name="Exit" parent="." instance=ExtResource( 8 )]
+position = Vector2( 69.8061, 571.745 )
+collision_layer = 128
