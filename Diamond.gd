@@ -1,10 +1,8 @@
 extends Sprite
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-
 export var pts = 5
+
+signal diamond_picked
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -16,4 +14,5 @@ func _ready():
 
 
 func _on_Area2D_body_entered(body):
+	emit_signal("diamond_picked")
 	queue_free()

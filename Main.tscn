@@ -50,7 +50,9 @@ position = Vector2( 355, 101 )
 
 [node name="TileMap" parent="." instance=ExtResource( 5 )]
 
-[node name="Diamond" parent="." instance=ExtResource( 6 )]
+[node name="Diamond" parent="." groups=[
+"Diamonds",
+] instance=ExtResource( 6 )]
 position = Vector2( 897.343, 511.504 )
 
 [node name="HUD" parent="." instance=ExtResource( 7 )]
